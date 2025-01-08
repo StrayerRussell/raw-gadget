@@ -20,13 +20,30 @@
 #include <string.h>
 #include <unistd.h>
 
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/ioctl.h>
 #include <sys/mman.h>
 
 #include <linux/types.h>
+
 #include <linux/usb/ch9.h>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -109,23 +126,6 @@ struct usb_raw_eps_info {
 #define USB_RAW_IOCTL_EP_SET_HALT	_IOW('U', 13, __u32)
 #define USB_RAW_IOCTL_EP_CLEAR_HALT	_IOW('U', 14, __u32)
 #define USB_RAW_IOCTL_EP_SET_WEDGE	_IOW('U', 15, __u32)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*----------------------------------------------------------------------*/
 
@@ -410,6 +410,24 @@ void log_control_request(struct usb_ctrlrequest *ctrl) {
 	}
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void log_event(struct usb_raw_event *event) {
 	switch (event->type) {
 	case USB_RAW_EVENT_CONNECT:
@@ -435,20 +453,6 @@ void log_event(struct usb_raw_event *event) {
 		printf("event: %d (unknown), length: %u\n", event->type, event->length);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*----------------------------------------------------------------------*/
 
@@ -546,6 +550,41 @@ struct usb_bos_descriptor usb_bos = {
 	.bNumDeviceCaps =	0,
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int build_config(char *data, int length, bool other_speed) {
 	struct usb_config_descriptor *config =
 		(struct usb_config_descriptor *)data;
@@ -580,39 +619,6 @@ int build_config(char *data, int length, bool other_speed) {
 
 	return total_length;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -747,6 +753,7 @@ void *ep_bulk_in_loop(void *arg) {
 
 	return NULL;
 }
+
 
 bool ep0_request(int fd, struct usb_raw_control_event *event,
 				struct usb_raw_control_io *io) {
@@ -906,6 +913,26 @@ void ep0_loop(int fd) {
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 int main(int argc, char **argv) {
 	const char *device = "dummy_udc.0";
