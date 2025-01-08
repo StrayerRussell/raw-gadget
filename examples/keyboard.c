@@ -268,6 +268,10 @@ void usb_raw_ep_set_halt(int fd, int ep) {
 
 /*----------------------------------------------------------------------*/
 
+
+
+
+
 void log_control_request(struct usb_ctrlrequest *ctrl) {
 	printf("  bRequestType: 0x%x (%s), bRequest: 0x%x, wValue: 0x%x,"
 		" wIndex: 0x%x, wLength: %d\n", ctrl->bRequestType,
@@ -454,6 +458,7 @@ void log_event(struct usb_raw_event *event) {
 
 #define BCD_USB		0x0200
 
+// Pretend to be HID Keyboard
 #define USB_VENDOR	0x046d
 #define USB_PRODUCT	0xc312 
 
@@ -468,6 +473,7 @@ void log_event(struct usb_raw_event *event) {
 
 // Assigned dynamically.
 #define EP_NUM_INT_IN	0x0
+
 
 struct usb_device_descriptor usb_device = {
 	.bLength =		USB_DT_DEVICE_SIZE,
@@ -851,6 +857,20 @@ bool ep0_request(int fd, struct usb_raw_control_event *event,
 		exit(EXIT_FAILURE);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void ep0_loop(int fd) {
 	while (true) {
