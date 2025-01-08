@@ -28,6 +28,8 @@
 #include <linux/types.h>
 #include <linux/usb/ch9.h>
 
+
+
 /*----------------------------------------------------------------------*/
 
 #define UDC_NAME_LENGTH_MAX 128
@@ -107,6 +109,23 @@ struct usb_raw_eps_info {
 #define USB_RAW_IOCTL_EP_SET_HALT	_IOW('U', 13, __u32)
 #define USB_RAW_IOCTL_EP_CLEAR_HALT	_IOW('U', 14, __u32)
 #define USB_RAW_IOCTL_EP_SET_WEDGE	_IOW('U', 15, __u32)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*----------------------------------------------------------------------*/
 
@@ -233,6 +252,19 @@ void usb_raw_ep_set_halt(int fd, int ep) {
 		exit(EXIT_FAILURE);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*----------------------------------------------------------------------*/
 
@@ -404,6 +436,20 @@ void log_event(struct usb_raw_event *event) {
 	}
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*----------------------------------------------------------------------*/
 
 #define BCD_USB		0x0200
@@ -534,6 +580,42 @@ int build_config(char *data, int length, bool other_speed) {
 
 	return total_length;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*----------------------------------------------------------------------*/
 
